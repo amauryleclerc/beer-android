@@ -59,7 +59,7 @@ public class CategorieListActivity extends RoboActivity implements TaskListener,
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Categorie categorie = (Categorie) parent.getItemAtPosition(position);
-       Intent intent = new Intent(this, StyleListActivity.class);
+        Intent intent = new Intent(this, StyleListActivity.class);
         intent.putExtra("categorie_id", categorie.getId());
         intent.putExtra("categorie_name", categorie.getName());
         this.startActivity(intent);

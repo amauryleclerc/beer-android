@@ -35,5 +35,10 @@ public abstract class RestService {
                 .queryParam("key", key);
         return builder.build().encode().toUri();
     }
-
+    public URI getURI(String url, String key, Long styleId){
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
+                .queryParam("styleId", styleId)
+        .queryParam("key", key);
+        return builder.build().encode().toUri();
+    }
 }

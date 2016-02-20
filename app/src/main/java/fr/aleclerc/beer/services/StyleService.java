@@ -30,17 +30,17 @@ public class StyleService extends RestService {
         final String url =  context.getString(R.string.url_styles);
         final String key =  context.getString(R.string.key);
         Log.d(LOG_TAG, "Invoke url " + url);
-        List<Style> categories = new ArrayList<Style>();
+        List<Style> styles = new ArrayList<Style>();
         try {
             Log.i("test", "test");
             ResponseEntity<StyleData> responseEntity = getRestTemplate().exchange(getURI(url,key)
                     , HttpMethod.GET, getHttpEntity(), StyleData.class );
             Log.d(LOG_TAG, "nb style: " + responseEntity.getBody().getData().size());
             Log.d(LOG_TAG, responseEntity.getBody().getMessage() );
-            categories.addAll(responseEntity.getBody().getData());
+            styles.addAll(responseEntity.getBody().getData());
         } catch (RestClientException e) {
             Log.e(LOG_TAG,"RestException dans le chargement des donnees serveur ARRET",e);
         }
-        return categories;
+        return styles;
     }
 }
