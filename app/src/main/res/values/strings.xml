@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Beer</string>
+    <string name="url_categories">http://api.brewerydb.com/v2/categories</string>
+    <string name="key">3fb832160850da3fb006f7009a11cbd2</string>
 </resources>
