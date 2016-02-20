@@ -12,7 +12,7 @@ import fr.aleclerc.beer.services.StyleService;
 /**
  * Created by Amaury on 20/02/2016.
  */
-public class GetStylesTask extends AsyncTask<Long,Void,List<Style>>{
+public class GetStylesTask extends AsyncTask<Void,Void,List<Style>>{
 
     private Context context;
     private TaskListener listener;
@@ -23,13 +23,14 @@ public class GetStylesTask extends AsyncTask<Long,Void,List<Style>>{
     }
 
     @Override
-    protected List<Style> doInBackground(Long... params) {
+    protected List<Style> doInBackground(Void... params) {
         StyleService service = new StyleService(context);
         return  service.getStyles();
     }
 
     @Override
     protected void onPostExecute(List<Style> styles) {
+
         listener.onTaskFinish();
     }
 }

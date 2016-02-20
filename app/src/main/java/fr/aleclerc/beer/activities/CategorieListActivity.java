@@ -1,5 +1,6 @@
 package fr.aleclerc.beer.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,6 +33,7 @@ public class CategorieListActivity extends RoboActivity implements TaskListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         tvTitre.setText("Catégories");
+        lvCategorie.setOnItemClickListener(this);
     }
 
     @Override
@@ -57,9 +59,10 @@ public class CategorieListActivity extends RoboActivity implements TaskListener,
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Categorie categorie = (Categorie) parent.getItemAtPosition(position);
-     /*   Intent intent = new Intent(this, ListTempsArretsActivity.class);
-        intent.putExtra("codeLieu", arret.getCodeLieu());
-        intent.putExtra("nomLieu", arret.getLibelle());
-        this.startActivity(intent);*/
+       Intent intent = new Intent(this, StyleListActivity.class);
+        intent.putExtra("categorie_id", categorie.getId());
+        intent.putExtra("categorie_name", categorie.getName());
+        this.startActivity(intent);
+
     }
 }

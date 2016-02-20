@@ -6,7 +6,7 @@ package fr.aleclerc.beer.beans;
 public class Style {
     private long id;
     private String name;
-
+    private long categoryId;
     public long getId() {
         return id;
     }
@@ -21,5 +21,13 @@ public class Style {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(long categoryId) {
+        this.categoryId = categoryId;
     }
 }

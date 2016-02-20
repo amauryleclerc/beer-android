@@ -37,6 +37,7 @@ public class CategorieService  extends  RestService{
                     , HttpMethod.GET, getHttpEntity(), CategorieData.class);
 
             Log.d(LOG_TAG, "nb categories: " + responseEntity.getBody().getData().size());
+            Log.d(LOG_TAG, responseEntity.getBody().getMessage() );
             categories.addAll(responseEntity.getBody().getData());
         } catch (RestClientException e) {
             Log.e(LOG_TAG,"RestException dans le chargement des donnees serveur ARRET",e);
