@@ -1,6 +1,8 @@
 package fr.aleclerc.beer.activities;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,7 +20,7 @@ import roboguice.inject.InjectView;
 
 
 @ContentView(R.layout.activity_categorie_list)
-public class CategorieListActivity extends RoboActivity implements TaskListener{
+public class CategorieListActivity extends RoboActivity implements TaskListener, AdapterView.OnItemClickListener {
 
     @InjectView(R.id.tvTitre)
     TextView tvTitre;
@@ -43,12 +45,21 @@ public class CategorieListActivity extends RoboActivity implements TaskListener{
     public void onTaskFinish() {
         try {
             categories = task.get();
-            CategoriesAdapter adatpter = new CategoriesAdapter(this, R.layout.categorie_item, categories);
-            lvCategorie.setAdapter(adatpter);
+            CategoriesAdapter adapter = new CategoriesAdapter(this, R.layout.categorie_item, categories);
+            lvCategorie.setAdapter(adapter);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Categorie categorie = (Categorie) parent.getItemAtPosition(position);
+     /*   Intent intent = new Intent(this, ListTempsArretsActivity.class);
+        intent.putExtra("codeLieu", arret.getCodeLieu());
+        intent.putExtra("nomLieu", arret.getLibelle());
+        this.startActivity(intent);*/
     }
 }

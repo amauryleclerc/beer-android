@@ -2,7 +2,6 @@ package fr.aleclerc.beer.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import java.util.List;
 
@@ -26,14 +25,11 @@ public class GetCategoriesTask extends AsyncTask<Void,Void,List<Categorie>>{
     @Override
     protected List<Categorie> doInBackground(Void... params) {
         CategorieService service = new CategorieService(context);
-
-
         return  service.getCategorie();
     }
 
     @Override
     protected void onPostExecute(List<Categorie> categories) {
-        Log.d("onPostExecute", categories.get(0).getName());
         listener.onTaskFinish();
     }
 }
