@@ -1,13 +1,23 @@
 package fr.aleclerc.beer;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
-public class CategorieListActivity extends AppCompatActivity {
+import roboguice.activity.RoboActivity;
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectView;
+
+
+@ContentView(R.layout.activity_categorie_list)
+public class CategorieListActivity extends RoboActivity {
+
+
+    @InjectView(R.id.tvTitre)
+    TextView tvTitre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_categorie_list);
+        tvTitre.setText("Categorie");
     }
 }
