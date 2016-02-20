@@ -4,17 +4,10 @@ package fr.aleclerc.beer.beans;
  * Created by Amaury on 20/02/2016.
  */
 public class Beer {
-   // private long id;
+    private String id;
     private String name;
+    private String description;
 
-    /*public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-*/
     public String getName() {
         return name;
     }
@@ -23,5 +16,19 @@ public class Beer {
         this.name = name;
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

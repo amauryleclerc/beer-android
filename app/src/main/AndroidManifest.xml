@@ -18,10 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.StyleListActivity">
-
         </activity>
         <activity android:name=".activities.BeerListActivity">
-
+        </activity>
+        <activity android:name=".activities.BeerActivity">
         </activity>
     </application>
 

@@ -2,6 +2,8 @@ package fr.aleclerc.beer.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,7 +24,7 @@ import roboguice.inject.InjectView;
  * Created by Amaury on 20/02/2016.
  */
 @ContentView(R.layout.activity_beer_list)
-public class BeerListActivity extends RoboActivity implements TaskListener {
+public class BeerListActivity extends RoboActivity implements TaskListener, AdapterView.OnItemClickListener {
 
     @InjectView(R.id.tvTitre)
     TextView tvTitre;
@@ -40,6 +42,7 @@ public class BeerListActivity extends RoboActivity implements TaskListener {
         String style_name =	intent.getStringExtra("style_name");
         tvTitre.setText(style_name);
         this.beers = new ArrayList<Beer>();
+        lvBeer.setOnItemClickListener(this);
     }
 
 
@@ -63,5 +66,14 @@ public class BeerListActivity extends RoboActivity implements TaskListener {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Beer beer = (Beer) parent.getItemAtPosition(position);
+        Intent intent = new Intent(this, BeerActivity.class);
+        intent.putExtra("beer_id", beer.getId());
+        intent.putExtra("beer_name", beer.getName());
+        this.startActivity(intent);
     }
 }
