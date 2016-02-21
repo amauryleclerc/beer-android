@@ -24,11 +24,11 @@ import roboguice.inject.InjectView;
 public class CategorieListActivity extends RoboActivity implements TaskListener, AdapterView.OnItemClickListener {
 
     @InjectView(R.id.tvTitre)
-    TextView tvTitre;
+    private TextView tvTitre;
     @InjectView(R.id.lvCategorie)
-    ListView lvCategorie;
+    private ListView lvCategorie;
     GetCategoriesTask task;
-    List<Categorie> categories;
+    private List<Categorie> categories;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

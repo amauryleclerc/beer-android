@@ -2,6 +2,7 @@ package fr.aleclerc.beer.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
@@ -10,6 +11,7 @@ import fr.aleclerc.beer.Listeners.TaskListener;
 import fr.aleclerc.beer.R;
 import fr.aleclerc.beer.beans.Beer;
 import fr.aleclerc.beer.tasks.GetBeerTask;
+import fr.aleclerc.beer.tasks.GetImageTask;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
@@ -21,11 +23,11 @@ import roboguice.inject.InjectView;
 public class BeerActivity extends RoboActivity implements TaskListener {
 
     @InjectView(R.id.tvTitre)
-    TextView tvTitre;
-
+    private TextView tvTitre;
     @InjectView(R.id.tvDescription)
-    TextView tvDescription;
-
+    private TextView tvDescription;
+    @InjectView(R.id.ivLabel)
+    private ImageView ivLabel;
     private GetBeerTask task;
     private String beer_id;
     private Beer beer = null;
@@ -54,6 +56,10 @@ public class BeerActivity extends RoboActivity implements TaskListener {
             beer = task.get();
             if(beer.getDescription() != null){
                 tvDescription.setText(beer.getDescription());
+            }
+            if(beer.getLabels() != null && beer.getLabels().getLarge() != null){
+                GetImageTask imageTask = new GetImageTask(ivLabel);
+                imageTask.execute(beer.getLabels().getLarge());
             }
 
         } catch (InterruptedException e) {

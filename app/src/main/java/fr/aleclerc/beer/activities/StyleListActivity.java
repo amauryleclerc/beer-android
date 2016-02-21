@@ -27,9 +27,9 @@ import roboguice.inject.InjectView;
 public class StyleListActivity  extends RoboActivity implements TaskListener, AdapterView.OnItemClickListener {
 
     @InjectView(R.id.tvTitre)
-    TextView tvTitre;
+    private TextView tvTitre;
     @InjectView(R.id.lvStyle)
-    ListView lvStyle;
+    private ListView lvStyle;
 
     private GetStylesTask task;
     private Long categorie_id;
@@ -40,7 +40,7 @@ public class StyleListActivity  extends RoboActivity implements TaskListener, Ad
         Intent intent = getIntent();
         categorie_id =	intent.getLongExtra("categorie_id", 0);
         String categorie_name =	intent.getStringExtra("categorie_name");
-        tvTitre.setText(categorie_name);
+        tvTitre.setText("Styles de "+categorie_name);
         this.styles = new ArrayList<Style>();
         lvStyle.setOnItemClickListener(this);
     }

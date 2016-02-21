@@ -7,7 +7,7 @@ public class Beer {
     private String id;
     private String name;
     private String description;
-
+    private Labels labels;
     public String getName() {
         return name;
     }
@@ -30,5 +30,13 @@ public class Beer {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Labels getLabels() {
+        return labels;
+    }
+
+    public void setLabels(Labels labels) {
+        this.labels = labels;
     }
 }

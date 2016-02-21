@@ -27,9 +27,9 @@ import roboguice.inject.InjectView;
 public class BeerListActivity extends RoboActivity implements TaskListener, AdapterView.OnItemClickListener {
 
     @InjectView(R.id.tvTitre)
-    TextView tvTitre;
+    private TextView tvTitre;
     @InjectView(R.id.lvBeer)
-    ListView lvBeer;
+    private ListView lvBeer;
 
     private GetBeersTask task;
     private Long style_id;
@@ -40,7 +40,7 @@ public class BeerListActivity extends RoboActivity implements TaskListener, Adap
         Intent intent = getIntent();
         style_id =	intent.getLongExtra("style_id", 0);
         String style_name =	intent.getStringExtra("style_name");
-        tvTitre.setText(style_name);
+        tvTitre.setText("Bières de "+style_name);
         this.beers = new ArrayList<Beer>();
         lvBeer.setOnItemClickListener(this);
     }
